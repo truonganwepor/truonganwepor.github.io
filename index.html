@@ -248,34 +248,24 @@
         .principles li { display: flex; gap: 10px; margin-bottom: 12px; align-items: center; }
         .principles li i { color: var(--main-color); }
 
-        /* --- NEW: FOOTBALL PROMO SECTION --- */
         /* CSS cho class .football-promo */
 .football-promo {
-    position: relative;
     /* Đặt màu chữ chính là màu trắng */
     color: #fff;
     
-    /* --- CẤU HÌNH ẢNH NỀN --- */
-    /* Sử dụng linear-gradient để tạo lớp phủ tối màu đen mờ lên trên ảnh */
-    /* Thay thế URL bên trong bằng link ảnh sân vận động bạn muốn */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
-                url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2070&auto=format&fit=crop');
-    
-    /* Đảm bảo ảnh phủ kín khung */
-    background-size: cover;
-    /* Căn giữa ảnh */
-    background-position: center;
-    /* Không lặp lại ảnh */
-    background-repeat: no-repeat;
+    /* --- CẤU HÌNH NỀN CAM GRADIENT --- */
+    /* Tạo dải màu chuyển từ cam sáng sang cam đỏ đậm */
+    /* Bạn có thể thay đổi mã màu tùy thích */
+    background: linear-gradient(135deg, #ff8c00 0%, #e63e00 100%);
     
     /* Thêm padding để nội dung không bị sát lề */
     padding: 60px 30px;
     /* Bo góc nhẹ cho đẹp (tuỳ chọn) */
     border-radius: 15px;
-    overflow: hidden;
-    display: flex; /* Giúp căn chỉnh icon quả bóng và nội dung */
+    display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(230, 62, 0, 0.3); /* Tạo bóng đổ nhẹ */
 }
 
 /* Đảm bảo tiêu đề H2 màu trắng */
@@ -284,11 +274,10 @@
     font-weight: bold;
 }
 
-/* Style nhẹ lại cho icon quả bóng bên phải để nó nổi bật trên nền ảnh */
+/* Style cho icon quả bóng bên phải trên nền cam */
 .football-image i {
-    color: rgba(255, 255, 255, 0.2); /* Làm mờ nhẹ icon */
-    font-size: 8rem; /* Tăng kích thước icon */
-    transform: rotate(-20deg); /* Xoay nhẹ tạo kiểu */
+    color: rgba(255, 255, 255, 0.3); /* Màu trắng mờ */
+    font-size: 8rem;
 }
 
         .football-content { z-index: 2; flex: 1; }
