@@ -546,25 +546,30 @@
     </footer>
 
     <style>
-    /* 1. Khung bao ngoài: Giới hạn chiều cao tối đa để không bị quá khổ */
+    /* 1. KHUNG SLIDER: Nhỏ gọn hơn, canh giữa */
     .slider {
         position: relative;
-        width: 90%;          /* Chiều rộng 90% màn hình */
-        max-width: 1200px;   /* Giới hạn chiều rộng tối đa cho đẹp */
         
-        /* Thay đổi quan trọng: Giới hạn chiều cao và tỷ lệ */
-        height: auto;        
-        aspect-ratio: 3/1;   /* Tỷ lệ 3:1 (ngang dài, dọc ngắn) chuẩn banner */
-        max-height: 450px;   /* Không bao giờ cao quá 450px */
+        /* Chiếm 90% chiều rộng màn hình (chừa lề 5% mỗi bên) */
+        width: 90%; 
         
-        margin: 20px auto;
+        /* Giới hạn độ rộng tối đa để không bị bè ra quá mức trên màn hình lớn */
+        max-width: 1100px; 
+        
+        /* Tỷ lệ khung hình 21:9 (chuẩn banner ngang) */
+        aspect-ratio: 21/9;
+        
+        /* Giới hạn chiều cao tuyệt đối không quá 400px */
+        max-height: 400px; 
+        
+        margin: 20px auto; /* Tự động canh giữa màn hình */
         overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        background: #f0f0f0; /* Màu nền dự phòng */
+        border-radius: 15px; /* Bo góc tròn hơn 1 chút cho đẹp */
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Đổ bóng nhẹ tạo chiều sâu */
+        background: #eee; /* Màu nền chờ khi ảnh chưa tải */
     }
 
-    /* 2. Băng chuyền ảnh */
+    /* 2. BĂNG CHUYỀN (Giữ nguyên) */
     .slides {
         display: flex;
         width: 100%;
@@ -572,26 +577,25 @@
         transition: transform 0.5s ease-in-out;
     }
 
-    /* 3. Ảnh bên trong: Ép hiển thị full 100% không bị cắt */
+    /* 3. ẢNH: Ép hiển thị 100% khung */
     .slides img {
         width: 100%;
         height: 100%;
-        flex-shrink: 0;      /* Không cho ảnh co lại */
+        flex-shrink: 0;
         
-        /* QUAN TRỌNG: Chọn 1 trong 2 dòng dưới đây tùy ý thích */
-        object-fit: fill;    /* Kéo dãn ảnh cho vừa khít khung (ảnh có thể hơi méo chút xíu nhưng full khung) */
-        /* object-fit: contain;  Dùng dòng này nếu muốn giữ nguyên tỉ lệ ảnh gốc (sẽ có khoảng trắng 2 bên nếu ảnh quá ngắn) */
+        /* 'fill' sẽ kéo dãn ảnh để lấp đầy 100% khung, đảm bảo không bị cắt mất chi tiết nào */
+        object-fit: fill; 
         
         display: block;
     }
 
-    /* Các nút điều hướng (giữ nguyên) */
-    .nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 20px; pointer-events: none; }
-    .nav button { pointer-events: auto; background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; transition: 0.3s;}
+    /* NÚT ĐIỀU HƯỚNG (Giữ nguyên) */
+    .nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 15px; pointer-events: none; }
+    .nav button { pointer-events: auto; background: rgba(0,0,0,0.4); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: 0.3s; font-size: 18px; display: flex; align-items: center; justify-content: center; }
     .nav button:hover { background: #f36f21; }
-    .dots { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; gap: 10px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; border: 1px solid #999;}
-    .dot.active { background: #f36f21; transform: scale(1.3); border-color: #f36f21;}
+    .dots { position: absolute; bottom: 10px; width: 100%; display: flex; justify-content: center; gap: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); cursor: pointer; transition: 0.3s; }
+    .dot.active { background: #f36f21; transform: scale(1.4); }
 </style>
 </body>
 </html>
