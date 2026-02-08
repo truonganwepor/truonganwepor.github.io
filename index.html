@@ -136,13 +136,11 @@
 
     .slider {
         position: relative;
-        width: 95%;            /* Chiếm 100% chiều rộng màn hình */
-        max-width: 95%;        /* Bỏ giới hạn chiều rộng tối đa */
+        width: 100%;            /* Chiếm 100% chiều rộng màn hình */
+        max-width: 100%;        /* Bỏ giới hạn chiều rộng tối đa */
         aspect-ratio: 16/9;     
-        
-        /* Bỏ giới hạn chiều cao cứng (max-height) để banner phóng to tự nhiên theo chiều rộng */
-        height: auto;           
-        
+        height: 768px;           
+        width: 1024px;
         margin: 0;              /* Bỏ khoảng cách lề, dính sát vào Header */
         overflow: hidden;
         border-radius: 0;       /* Bỏ bo góc để vuông vức với màn hình */
