@@ -249,22 +249,47 @@
         .principles li i { color: var(--main-color); }
 
         /* --- NEW: FOOTBALL PROMO SECTION --- */
-        .football-promo {
-            /* Hình nền sân cỏ - Thay đổi url() nếu bạn có ảnh khác */
-            background: linear-gradient(135deg, rgba(0, 83, 156, 0.9) 0%, rgba(0, 43, 82, 0.9) 100%), url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Alt_Olympiastadion_M%C3%BCnchen.jpg/1280px-Alt_Olympiastadion_M%C3%BCnchen.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 60px 8%;
-            position: relative;
-            overflow: hidden;
-            color: white;
-            border-radius: 20px;
-            margin: 40px 8%;
-            box-shadow: 0 15px 40px rgba(0,83,156, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        /* CSS cho class .football-promo */
+.football-promo {
+    position: relative;
+    /* Đặt màu chữ chính là màu trắng */
+    color: #fff;
+    
+    /* --- CẤU HÌNH ẢNH NỀN --- */
+    /* Sử dụng linear-gradient để tạo lớp phủ tối màu đen mờ lên trên ảnh */
+    /* Thay thế URL bên trong bằng link ảnh sân vận động bạn muốn */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2070&auto=format&fit=crop');
+    
+    /* Đảm bảo ảnh phủ kín khung */
+    background-size: cover;
+    /* Căn giữa ảnh */
+    background-position: center;
+    /* Không lặp lại ảnh */
+    background-repeat: no-repeat;
+    
+    /* Thêm padding để nội dung không bị sát lề */
+    padding: 60px 30px;
+    /* Bo góc nhẹ cho đẹp (tuỳ chọn) */
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex; /* Giúp căn chỉnh icon quả bóng và nội dung */
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Đảm bảo tiêu đề H2 màu trắng */
+.football-promo h2 {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Style nhẹ lại cho icon quả bóng bên phải để nó nổi bật trên nền ảnh */
+.football-image i {
+    color: rgba(255, 255, 255, 0.2); /* Làm mờ nhẹ icon */
+    font-size: 8rem; /* Tăng kích thước icon */
+    transform: rotate(-20deg); /* Xoay nhẹ tạo kiểu */
+}
 
         .football-content { z-index: 2; flex: 1; }
         .football-content h2 { color: #fff; text-align: left; margin-bottom: 10px; font-size: 2.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
@@ -468,7 +493,7 @@
     <section class="content-section" id="gioithieu">
         <div class="about-container">
             <div class="about-image">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/_sZ6G9Kh0Gc?si=z8Qd4yLq1x2x3" title="Video Giới thiệu FPT Telecom" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="100%" height="315" src="https://www.youtube.com/watch?v=xmSP9cuOJGs" title="Video Giới thiệu FPT Telecom" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="about-content">
                 <h2>TẠI SAO CHỌN FPT TELECOM?</h2>
