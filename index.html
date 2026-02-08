@@ -251,31 +251,39 @@
 
 /* CSS mới cho ảnh banner */
 .football-promo-img {
-    width: 90%; /* Chiếm 90% chiều rộng màn hình (giống slider) */
-    max-width: 1200px;
-    height: 90%;
-    max-height: 800px;
-    margin: 40px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+    width: 90%;           /* Chiếm 90% chiều rộng màn hình */
+    max-width: 1200px;    /* Giới hạn chiều rộng tối đa */
+    margin: 40px auto;    /* Căn giữa */
     padding: 0;
     display: block;
 }
 
 .football-promo-img a {
-    display: block; /* Để thẻ a bao trọn bức ảnh */
-    transition: transform 0.3s ease; /* Tạo hiệu ứng mượt khi di chuột */
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-/* Hiệu ứng khi di chuột vào ảnh: Phóng to nhẹ */
+/* Hiệu ứng khi di chuột */
 .football-promo-img a:hover {
     transform: scale(1.02);
 }
 
+/* --- CHỈNH SỬA PHẦN NÀY --- */
 .football-promo-img img {
-    width: 100%;      /* Ảnh luôn co giãn vừa khung */
-    height: auto;     /* Chiều cao tự động theo tỷ lệ ảnh */
-    display: block;   /* Loại bỏ khoảng trắng thừa dưới chân ảnh */
-    border-radius: 15px; /* Bo tròn góc ảnh */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Đổ bóng cho nổi bật */
+    /* Logic: Ưu tiên chiều cao, chiều rộng tự động */
+    width: auto;            /* Để chiều rộng tự co giãn theo tỷ lệ ảnh */
+    max-width: 100%;        /* Nhưng không được rộng hơn khung chứa */
+    
+    max-height: 728px;      /* QUAN TRỌNG: Giới hạn chiều cao tối đa */
+    
+    display: block;         
+    margin: 0 auto;         /* Căn giữa bức ảnh nếu nó nhỏ hơn khung */
+    
+    border-radius: 15px;    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+    
+    /* Đảm bảo ảnh hiển thị trọn vẹn */
+    object-fit: contain;    
 }
         .football-content { z-index: 2; flex: 1; }
         .football-content h2 { color: #fff; text-align: left; margin-bottom: 10px; font-size: 2.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
