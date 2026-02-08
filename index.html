@@ -147,24 +147,45 @@
         background: #f0f0f0;
     }
 
-    /* 2. Băng chuyền chứa ảnh (Bắt buộc phải có display: flex) */
+    .slider {
+        position: relative;
+        width: 100%;            /* Chiếm 100% chiều rộng màn hình */
+        max-width: 100%;        /* Bỏ giới hạn chiều rộng tối đa */
+        
+        /* Tỷ lệ khung hình: 21/9 (Rộng/Cao). 
+           Nếu muốn banner cao hơn thì sửa thành 16/9 */
+        aspect-ratio: 21/9;     
+        
+        /* Bỏ giới hạn chiều cao cứng (max-height) để banner phóng to tự nhiên theo chiều rộng */
+        height: auto;           
+        
+        margin: 0;              /* Bỏ khoảng cách lề, dính sát vào Header */
+        overflow: hidden;
+        border-radius: 0;       /* Bỏ bo góc để vuông vức với màn hình */
+        background: #f0f0f0;
+    }
+
+    /* 2. Băng chuyền chứa ảnh */
     .slides {
-        display: flex;          /* Xếp ảnh thành hàng ngang */
+        display: flex;          
         width: 100%;
         height: 100%;
-        transition: transform 0.5s ease-in-out; /* Hiệu ứng trượt */
+        transition: transform 0.5s ease-in-out; 
     }
 
     /* 3. Cấu hình ảnh (Full 100%) */
     .slides img {
-        width: 100%;            /* Chiếm trọn chiều rộng khung */
-        height: 100%;           /* Chiếm trọn chiều cao khung */
-        flex-shrink: 0;         /* Không cho ảnh co lại */
-        object-fit: fill;       /* Kéo dãn ảnh cho vừa khít khung */
+        width: 100%;            
+        height: 100%;           
+        flex-shrink: 0;         
+        
+        /* Dùng 'cover' để ảnh tràn viền đẹp nhất, không bị méo hình. 
+           (Nếu bạn thấy ảnh bị cắt mất góc thì đổi thành 'fill' nhưng ảnh sẽ hơi bẹt) */
+        object-fit: cover;       
         display: block;
     }
 
-    /* 4. Nút điều hướng */
+    /* 4. Nút điều hướng (Đẩy lùi vào trong 1 chút cho đẹp) */
     .nav {
         position: absolute;
         top: 50%;
@@ -172,20 +193,20 @@
         display: flex;
         justify-content: space-between;
         transform: translateY(-50%);
-        padding: 0 10px;
-        pointer-events: none;   /* Để click xuyên qua vùng trống */
+        padding: 0 30px;        /* Cách lề màn hình 30px */
+        pointer-events: none;   
         z-index: 10;
     }
 
     .nav button {
-        pointer-events: auto;   /* Kích hoạt lại click cho nút */
-        background: rgba(0, 0, 0, 0.4);
+        pointer-events: auto;   
+        background: rgba(0, 0, 0, 0.3); /* Nền mờ hơn cho sang trọng */
         color: #fff;
-        border: none;
-        width: 40px;
-        height: 40px;
+        border: 1px solid rgba(255,255,255,0.5);
+        width: 50px;            /* Nút to hơn 1 chút */
+        height: 50px;
         border-radius: 50%;
-        font-size: 20px;
+        font-size: 24px;
         cursor: pointer;
         transition: 0.3s;
         display: flex;
@@ -195,27 +216,28 @@
 
     .nav button:hover {
         background: #f36f21;
+        border-color: #f36f21;
     }
 
     /* 5. Dấu chấm tròn */
     .dots {
         position: absolute;
-        bottom: 15px;
+        bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
         z-index: 10;
     }
 
     .dot {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.5);
         cursor: pointer;
         transition: 0.3s;
-        border: 1px solid #ccc;
+        border: 1px solid #fff; /* Thêm viền trắng cho nổi */
     }
 
     .dot.active {
@@ -601,7 +623,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 1. Khai báo biến
         const slides = document.querySelector('.slides');
         const images = document.querySelectorAll('.slides img');
         const dotsContainer = document.getElementById('dotsContainer');
@@ -611,13 +632,12 @@
         let index = 0;
         const totalSlides = images.length;
 
-        // 2. Tạo dấu chấm tròn tương ứng số ảnh
         if (dotsContainer && images.length > 0) {
-            dotsContainer.innerHTML = ''; // Xóa dots cũ nếu có
+            dotsContainer.innerHTML = ''; 
             images.forEach((_, i) => {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active'); // Active chấm đầu tiên
+                if (i === 0) dot.classList.add('active'); 
                 dot.addEventListener('click', () => moveToSlide(i));
                 dotsContainer.appendChild(dot);
             });
@@ -625,7 +645,6 @@
         
         const dots = document.querySelectorAll('.dot');
 
-        // 3. Hàm cập nhật trạng thái chấm tròn
         function updateDots() {
             dots.forEach(dot => dot.classList.remove('active'));
             if (dots[index]) {
@@ -633,27 +652,22 @@
             }
         }
 
-        // 4. Hàm di chuyển slide
         function moveToSlide(i) {
             if (i < 0) index = totalSlides - 1;
             else if (i >= totalSlides) index = 0;
             else index = i;
 
-            // Di chuyển băng chuyền
             if(slides) {
                 slides.style.transform = `translateX(${-index * 100}%)`;
             }
             updateDots();
         }
 
-        // 5. Sự kiện nút bấm
         if(nextBtn) nextBtn.addEventListener('click', () => moveToSlide(index + 1));
         if(prevBtn) prevBtn.addEventListener('click', () => moveToSlide(index - 1));
 
-        // 6. Tự động chạy sau 5 giây
         let autoSlide = setInterval(() => moveToSlide(index + 1), 5000);
 
-        // (Tùy chọn) Tạm dừng khi di chuột vào slider
         const slider = document.querySelector('.slider');
         if(slider) {
             slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
